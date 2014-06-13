@@ -26,7 +26,7 @@ in order to create Multiple mocks you can run this command
 
 php artisan crud:mock user,company,category
 
-# mocks must be seprated with ","
+// mocks must be seprated with ","
 
 
 
