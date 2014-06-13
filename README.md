@@ -8,9 +8,12 @@ copy commands/crud/ dir to your laravel : app/commands/
 open and edit app/start/artisan.php
 
 add these codes to end of the file
+```sh
 
 Artisan::add(new CrudMock);
 Artisan::add(new CrudMake);
+
+```
 
 // registers artisan command to laravel
 
