@@ -19,10 +19,13 @@ then you should create your mock in order to build your crud
 php artisan crud:mock user
 
 this command creates a mock for user Model
+
 you can find it in app/mocks/MockUser.php 
 
 in order to create Multiple mocks you can run this command
+
 php artisan crud:mock user,company,category
+
 # mocks must be seprated with ","
 
 
