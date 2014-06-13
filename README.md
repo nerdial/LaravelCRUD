@@ -1,4 +1,4 @@
 laravel-crud
 ============
 
-a simple porwerful crud for laravel 
+a simple powerful crud for laravel 
