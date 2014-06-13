@@ -36,7 +36,31 @@ php artisan crud:mock user,company,category
 
 > mocks must be seprated with ","
 
+so you have the mock , let's take look at it
 
+
+```sh
+<?php
+class MockUser {
+
+    public static $schema = array(
+        "id"               => "digit|index|show",
+        "username"         => "text|index|create|edit|show",
+        "password"         => "password|create|hash",
+        "password_confirm" => "password|create|deny",
+        "email"            => "email|create|edit",
+        "profile_picture"  => "file|create|edit",
+        "address"          => "textarea|create|edit"
+    );
+
+    public static $resourceName = "UserController";
+    public static $viewFolderName = "user";
+    public static $modelName = "User" ;
+    public static $validation = true;
+}
+
+```
+in $schema property you should define your table's field
 
 
 
