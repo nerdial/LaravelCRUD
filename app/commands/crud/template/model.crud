@@ -1,0 +1,15 @@
+<?php
+
+class {{MockName}} {
+
+    public static $schema = array(
+        "id" => "digit|index|show",
+    );
+
+    public static $resourceName = "{{ControllerName}}";
+    public static $viewFolderName = "{{ViewName}}";
+    public static $modelName = "{{ModelName}}" ;
+    public static $validation = true;
+
+}
+
