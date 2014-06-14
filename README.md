@@ -69,7 +69,7 @@ php artisan crud:make
 
 ```
 
-> this command looks for files in app/mocks/* and get their config and create Controller and View files
+> this command looks for files in app/mocks/* and get their config and creates Controller and View files
 
 
 
