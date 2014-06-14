@@ -84,11 +84,6 @@ notice that for more security we should not demonstrate some sensetive fiedls in
 let us take a look at this example 
 
 ```sh
-php artisan crud:make
-
-```
-
-```sh
 <?php
 class MockUser {
 
@@ -109,11 +104,16 @@ other options for fields are
 ```
 
 hash : you use hash for your field when you want to have your fields encoded for storing into database 
+
 deny : you use deny when you don't want to stroe the field into database  for example password confirm does not need to be stored
 
 
 in order to create your crud , run this command 
 
+```sh
+php artisan crud:make
+
+```
 
 > this command looks for files in app/mocks/* and get their config and creates Controller and View files
 
