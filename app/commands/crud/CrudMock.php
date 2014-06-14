@@ -3,6 +3,12 @@
 use Illuminate\Console\Command;
 use Symfony\Component\Console\Input\InputArgument;
 
+/**
+    * Simple CRUD Command for laravel
+    *
+    * @author Vahid Mahdiun
+*/
+
 class CrudMock extends Command
 {
 
