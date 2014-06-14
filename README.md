@@ -1,4 +1,4 @@
-laravel-crud
+laravel-CRUD
 ============
 
 a simple powerful artisan command to create crud for laravel in less than 5 mintues
