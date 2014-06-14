@@ -110,7 +110,7 @@ deny : you use deny when you don't want to stroe the field into database  for ex
 
 there is a $validation property in each mock file which says that each form must ( true ) or must not (false) be validated.
 
-notice that you should have a static peroperty called $rules in your Model.
+notice that you should have a static peroperty called $rules in your Model which defines your validation.
 
 
 last point is that when you use file type for fields it just create form for this and it does not take care of uploding files
