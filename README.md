@@ -1,7 +1,7 @@
 laravel-crud
 ============
 
-a simple powerful artisan command to create crud for laravel in 5 mintues
+a simple powerful artisan command to create crud for laravel in less than 5 mintues
 ----
 
 > copy commands/crud/ dir to your laravel : app/commands/
