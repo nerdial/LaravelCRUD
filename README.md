@@ -18,7 +18,7 @@ Artisan::add(new CrudMake);
 >  this registers artisan command to laravel
 
 
-then you should create your mock in order to build your crud
+then you should create your mock in order to build your crud.
 
 ```sh
 php artisan crud:mock user
@@ -28,7 +28,7 @@ php artisan crud:mock user
 
 > you can find it in app/mocks/MockUser.php 
 
-in order to create Multiple mocks you can run this command
+in order to create Multiple mocks you can run this command.
 
 ```sh
 php artisan crud:mock user,company,category
@@ -72,14 +72,14 @@ you can use one of these types below
 
 there are more other options for our fields
 
-if you want to show your fields in a specific page for example in index page [list page] you must use index
+if you want to show your fields in a specific page for example in index page [list page] you must use index.
 
 other possible options
 
 ```sh
 ["index", "edit", "show", "create"]
 ```
-notice that for more security we should not demonstrate some sensetive fiedls in everywhere for example password field
+notice that for more security we should not demonstrate some sensetive fiedls in everywhere for example password field.
 
 let us take a look at this example 
 
@@ -106,6 +106,14 @@ other options for fields are
 hash : you use hash for your field when you want to have your fields encoded for storing into database 
 
 deny : you use deny when you don't want to stroe the field into database  for example password confirm does not need to be stored
+
+
+there is a $validation property in each mock file which says that each form must ( true ) or must not (false) be validated.
+
+notice that you should have a static peroperty called $rules in your Model.
+
+
+last point is that when you use file type for fields it just create form for this and it does not take care of uploding files
 
 
 in order to create your crud , run this command 
