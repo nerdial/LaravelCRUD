@@ -3,10 +3,10 @@
 use Illuminate\Console\Command;
 
 /**
-     * Simple CRUD Command for laravel
-     *
-     * @author Vahid Mahdiun
-     */
+	* Simple CRUD Command for laravel
+	*
+	* @author Vahid Mahdiun
+*/
 
 class CrudMake extends Command
 {
