@@ -36,7 +36,7 @@ php artisan crud:mock user,company,category
 
 > mocks must be seprated with ","
 
-so you have the mock , let's take look at it
+so you have the mock , let's take a look at it
 
 
 ```sh
@@ -81,15 +81,39 @@ other possible options
 ```
 notice that for more security we should not demonstrate some sensetive fiedls in everywhere for example password field
 
-
-
-
-in order to create your crud , run this command 
+let us take a look at this example 
 
 ```sh
 php artisan crud:make
 
 ```
+
+```sh
+<?php
+class MockUser {
+
+    public static $schema = array(
+        "password"         => "password|create|hash",
+        "password_confirm  => "password|deny"
+    );
+}
+
+```
+
+in this example password field will be demonstrated just in create page // when a user is create
+
+other options for fields are 
+
+```sh
+["hash", "deny"]
+```
+
+hash : you use hash for your field when you want to have your fields encoded for storing into database 
+deny : you use deny when you don't want to stroe the field into database  for example password confirm does not need to be stored
+
+
+in order to create your crud , run this command 
+
 
 > this command looks for files in app/mocks/* and get their config and creates Controller and View files
 
