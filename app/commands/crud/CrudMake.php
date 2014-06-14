@@ -68,11 +68,13 @@ class CrudMake extends Command
      */
     public function fire()
     {
-        $fileAddress = File::files($this->getPath("mocks/"));
+        $fileAddress = File::files($this->getPath("mocks"));
         foreach ($fileAddress as $file) {
             $className = basename($file, '.php');
-            include_once($file);
-            $this->allMocks[] = $className;
+            if($this->checkModelExist($file)){
+                require_once($file);
+                $this->allMocks[] = $className;
+            }
         }
         foreach ($this->allMocks as $mock) {
             $this->initMock($mock);
@@ -195,10 +197,18 @@ class CrudMake extends Command
         return $body;
     }
 
+    protected function fieldIsFile($arraySearch){
+        if(!in_array("file",$arraySearch)){
+            return false;
+        }
+        return true;
+    }
+
     protected function viewCreate($viewFolderName, $model)
     {
         $create = File::get($this->getPath("commands/crud/template/view/create.crud"));
         $form = "";
+        $file = false;
         foreach ($this->schema as $fieldName => $value) {
             $fieldName = strtolower($fieldName);
             $formTitle = $this->replaceUnderScore(ucwords($fieldName));
@@ -210,11 +220,13 @@ class CrudMake extends Command
                         $element = $this->replaceField($fieldName, $fieldType);
                         $form .= $this->makeHtmlForm($title, $element, $this->createForm, $arraySearch);
                     }
+                    $file = $this->fieldIsFile($arraySearch);
                 }
             }
         }
-        $search = array('{{caption}}', '{{forms}}');
-        $replace = array($this->caption, $form);
+        $fileValue = ($file)?"true":"false";
+        $search = array('{{caption}}', '{{forms}}' , '{{file}}');
+        $replace = array($this->caption, $form, $fileValue);
         $content = str_replace($search, $replace, $create);
         File::put($this->getPath("views/{$viewFolderName}/") . "create.blade" . ".php", $content);
     }
@@ -348,7 +360,7 @@ class CrudMake extends Command
             $this->caption
         );
         $content = str_replace($search, $replace, $template);
-        $this->checkControllerExit($content);
+        $this->checkControllerExist($content);
     }
 
     protected function getValidation()
@@ -398,7 +410,12 @@ class CrudMake extends Command
         return $result;
     }
 
-    protected function checkControllerExit($content)
+    protected function checkModelExist($modelPath){
+        if ( File::exists($modelPath)) return true;
+        else                          return false;
+    }
+
+    protected function checkControllerExist($content)
     {
         $controllerPath = $this->getPath("controllers/") . ucwords($this->controllerName) . ".php";
         if (File::exists($controllerPath)) {

@@ -19,7 +19,7 @@
 <!-- if there are creation errors, they will show here -->
 {{ HTML::ul($errors->all() )}}
 
-{{ Form::open(array('url' => '{{caption}}')) }}
+{{ Form::open(array('url' => '{{caption}}' , 'files' => {{file}} )) }}
 
 {{forms}}
 	{{ Form::submit('Create the {{caption}}', array('class' => 'btn btn-primary')) }}
