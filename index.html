@@ -1,36 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Laravel-crud : a simple porwerful crud for laravel " />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Laravel-crud-generator by vahidstar</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/main.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
 
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Laravel-crud</title>
   </head>
-
   <body>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/vahidstar/laravel-crud">View on GitHub</a>
+      <header>
+        <h1>Laravel-crud-generator</h1>
+        <p>a Simple Porwerful CRUD Generator for Laravel</p>
+      </header>
 
-          <h1 id="project_title">Laravel-crud</h1>
-          <h2 id="project_tagline">a simple porwerful crud for laravel </h2>
+      <div id="banner">
+        <span id="logo"></span>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/vahidstar/laravel-crud/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/vahidstar/laravel-crud/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+        <a href="https://github.com/vahidstar/laravel-crud" class="button fork"><strong>View On GitHub</strong></a>
+        <div class="downloads">
+          <span>Downloads:</span>
+          <ul>
+            <li><a href="https://github.com/vahidstar/laravel-crud/zipball/master" class="button">ZIP</a></li>
+            <li><a href="https://github.com/vahidstar/laravel-crud/tarball/master" class="button">TAR</a></li>
+          </ul>
+        </div>
+      </div><!-- end banner -->
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
+    <div class="wrapper">
+      <nav>
+        <ul></ul>
+      </nav>
+      <section>
         <h1>
 <a name="laravel-crud" class="anchor" href="#laravel-crud"><span class="octicon octicon-link"></span></a>laravel-crud</h1>
 
@@ -45,16 +53,16 @@
 
 <p>add these codes to end of the file</p>
 
-<div class="highlight highlight-sh"><pre>
+<div class="highlight highlight-sh"><pre>&lt;?php
 Artisan::add<span class="o">(</span>new CrudMock<span class="o">)</span><span class="p">;</span>
 Artisan::add<span class="o">(</span>new CrudMake<span class="o">)</span><span class="p">;</span>
 </pre></div>
 
 <blockquote>
-<p>registers artisan command to laravel</p>
+<p>this registers artisan command to laravel</p>
 </blockquote>
 
-<p>then you should create your mock in order to build your crud</p>
+<p>then you should create your mock in order to build your crud.</p>
 
 <div class="highlight highlight-sh"><pre>php artisan crud:mock user
 </pre></div>
@@ -65,7 +73,7 @@ Artisan::add<span class="o">(</span>new CrudMake<span class="o">)</span><span cl
 <p>you can find it in app/mocks/MockUser.php </p>
 </blockquote>
 
-<p>in order to create Multiple mocks you can run this command</p>
+<p>in order to create Multiple mocks you can run this command.</p>
 
 <div class="highlight highlight-sh"><pre>php artisan crud:mock user,company,category
 </pre></div>
@@ -74,7 +82,7 @@ Artisan::add<span class="o">(</span>new CrudMake<span class="o">)</span><span cl
 <p>mocks must be seprated with ","</p>
 </blockquote>
 
-<p>so you have the mock , let's take look at it</p>
+<p>so you have the mock , let's take a look at it</p>
 
 <div class="highlight highlight-sh"><pre>&lt;?php
 class MockUser <span class="o">{</span>
@@ -98,18 +106,71 @@ class MockUser <span class="o">{</span>
 </pre></div>
 
 <p>in $schema property you should define your table's field</p>
-      </section>
-    </div>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Laravel-crud maintained by <a href="https://github.com/vahidstar">vahidstar</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+<p>each field should have it's own type </p>
+
+<p>you can use one of these types below</p>
+
+<div class="highlight highlight-sh"><pre><span class="o">[</span><span class="s2">"text"</span>, <span class="s2">"hidden"</span>, <span class="s2">"digit"</span>, <span class="s2">"textarea"</span>, <span class="s2">"password"</span>, <span class="s2">"file"</span>, <span class="s2">"email"</span><span class="o">]</span>
+</pre></div>
+
+<p>there are more other options for our fields</p>
+
+<p>if you want to show your fields in a specific page for example in index page [list page] you must use index.</p>
+
+<p>other possible options</p>
+
+<div class="highlight highlight-sh"><pre><span class="o">[</span><span class="s2">"index"</span>, <span class="s2">"edit"</span>, <span class="s2">"show"</span>, <span class="s2">"create"</span><span class="o">]</span>
+</pre></div>
+
+<p>notice that for more security we should not demonstrate some sensetive fiedls in everywhere for example password field.</p>
+
+<p>let us take a look at this example </p>
+
+<div class="highlight highlight-sh"><pre>&lt;?php
+class MockUser <span class="o">{</span>
+
+    public static <span class="nv">$schema</span> <span class="o">=</span> array<span class="o">(</span>
+        <span class="s2">"password"</span>         <span class="o">=</span>&gt; <span class="s2">"password|create|hash"</span>,
+        <span class="s2">"password_confirm  =&gt; "</span>password<span class="p">|</span>deny<span class="err">"</span>
+    <span class="o">)</span><span class="p">;</span>
+<span class="o">}</span>
+
+</pre></div>
+
+<p>in this example password field will be demonstrated just in create page // when a user is create</p>
+
+<p>other options for fields are </p>
+
+<div class="highlight highlight-sh"><pre><span class="o">[</span><span class="s2">"hash"</span>, <span class="s2">"deny"</span><span class="o">]</span>
+</pre></div>
+
+<p>hash : you use hash for your field when you want to have your fields encoded for storing into database </p>
+
+<p>deny : you use deny when you don't want to stroe the field into database  for example password confirm does not need to be stored</p>
+
+<p>there is a $validation property in each mock file which says that each form must ( true ) or must not (false) be validated.</p>
+
+<p>notice that you should have a static peroperty called $rules in your Model which defines your validation.</p>
+
+<p>last point is that when you use file type for fields it just create form for this and it does not take care of uploding files</p>
+
+<p>in order to create your crud , run this command </p>
+
+<div class="highlight highlight-sh"><pre>php artisan crud:make
+
+</pre></div>
+
+<blockquote>
+<p>this command looks for files in app/mocks/* and get their config and creates Controller and View files</p>
+</blockquote>
+      </section>
+      <footer>
+        <p>Project maintained by <a href="https://github.com/vahidstar">vahidstar</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></small></p>
       </footer>
     </div>
-
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
     
-
   </body>
 </html>
