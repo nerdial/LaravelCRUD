@@ -72,13 +72,15 @@ you can use one of these types below
 
 there are more other options for our fields
 
-if you want to show your fields in every in specific page for example in index page [list page]
-you can use one of these 
+if you want to show your fields in a specific page for example in index page [list page] you must use index
+
+other possible options
 
 ```sh
 ["index", "edit", "show", "create"]
 ```
-notice that for more security we should not show some sensetive fiedls in everywhere for example password
+notice that for more security we should not demonstrate some sensetive fiedls in everywhere for example password field
+
 
 
 
