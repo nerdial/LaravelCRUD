@@ -333,16 +333,18 @@ class CrudMake extends Command
 
     protected function createResource()
     {
-        $template = File::get($this->getPath("commands/crud/template/resource.crud"));
-        $create = $this->variable . ' = new ' . $this->modelName . ";" . $this->newline();
-        $update = $this->variable . ' = ' . $this->modelName . '::find($id);' . $this->newline();
+        $template   = File::get($this->getPath("commands/crud/template/resource.crud"));
+        $create     = $this->variable . ' = new ' . $this->modelName . ";" . $this->newline();
+        $update     = $this->variable . ' = ' . $this->modelName . '::find($id);' . $this->newline();
         $validation = "";
+        $validationUpdate = "";
         if ($this->validation) {
-            $validation = $this->getValidation();
+            $validation       = $this->getValidation();
+            $validationUpdate = $this->getValidationUpdate();
         }
         $create .= $this->createFields("create", "Successfully Created the ");
         $update .= $this->createFields("edit", "Successfully Updated the ");
-        $search = array(
+        $search  = array(
             "ControllerName",
             '{{all}}',
             '{{model}}',
@@ -351,6 +353,7 @@ class CrudMake extends Command
             '{{store}}',
             '{{update}}',
             '{{validation}}',
+            '{{validationUpdate}}',
             '{{caption}}',
         );
 
@@ -363,6 +366,7 @@ class CrudMake extends Command
             $create,
             $update,
             $validation,
+            $validationUpdate,
             $this->caption
         );
         $content = str_replace($search, $replace, $template);
@@ -377,6 +381,16 @@ class CrudMake extends Command
 				->withErrors($validator)
 				->withInput(Input::except("password"));
 		}';
+    }
+
+    protected function getValidationUpdate()
+    {
+        return '$validator = Validator::make(Input::all(), ' . $this->modelName . '::$updateRules);
+        if ($validator->fails()) {
+            return Redirect::back()
+                ->withErrors($validator)
+                ->withInput(Input::except("password"));
+        }';
     }
 
     protected function createFields($type, $message)
