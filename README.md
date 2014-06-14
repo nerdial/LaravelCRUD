@@ -62,7 +62,27 @@ class MockUser {
 ```
 in $schema property you should define your table's field
 
-in order to create your crud thruogh this file run this command 
+each field should have it's own type 
+
+you can use one of these types below
+
+```sh
+["text", "hidden", "digit", "textarea", "password", "file", "email"]
+```
+
+there are more other options for our fields
+
+if you want to show your fields in every in specific page for example in index page [list page]
+you can use one of these 
+
+```sh
+["index", "edit", "show", "create"]
+```
+notice that for more security we should not show some sensetive fiedls in everywhere for example password
+
+
+
+in order to create your crud , run this command 
 
 ```sh
 php artisan crud:make
