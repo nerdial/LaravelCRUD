@@ -11,11 +11,11 @@ a simple powerful artisan command to create crud for laravel in less than 5 mint
 add these codes to end of the file
 
 ```sh
-
+<?php
 Artisan::add(new CrudMock);
 Artisan::add(new CrudMake);
 ```
->  registers artisan command to laravel
+>  this registers artisan command to laravel
 
 
 then you should create your mock in order to build your crud
@@ -62,6 +62,11 @@ class MockUser {
 ```
 in $schema property you should define your table's field
 
+in order to create your crud thruogh this file run this command 
 
+```sh
+php artisan crud:make
+
+```
 
 
