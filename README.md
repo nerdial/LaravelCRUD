@@ -4,6 +4,9 @@ laravel-CRUD
 a simple powerful artisan command to create crud for laravel in less than 5 mintues
 ----
 
+ [![Total Downloads](https://poser.pugx.org/barryvdh/laravel-ide-helper/d/total.png)](https://packagist.org/packages/barryvdh/laravel-ide-helper)
+
+
 > copy commands/crud/ dir to your laravel : app/commands/
 
 > open and edit app/start/artisan.php
