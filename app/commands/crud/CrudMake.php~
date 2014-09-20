@@ -326,7 +326,7 @@ class CrudMake extends Command
             }
         }
         $search = array('{{caption}}', '{{forms}}', '{{variable}}','{{route/index}}','{{route/}}');
-        $replace = array($this->caption, $form, $this->variable,$this->routeIndex,$this->route	);
+        $replace = array($this->caption, $form, $this->variable,$this->routeIndex,$this->route);
         $content = str_replace($search, $replace, $create);
         File::put($this->getPath("views/{$viewFolderName}/") . "edit.blade" . ".php", $content);
     }
@@ -436,7 +436,7 @@ class CrudMake extends Command
             . $this->newLine()
             . $this->tab(2)
             . "Session::flash('message', '{$message} {$this->caption}');
-			return Redirect::to('$this->routeIndex');"
+			return Redirect::to('$this->caption');"
             . $this->newLine();
         return $result;
     }

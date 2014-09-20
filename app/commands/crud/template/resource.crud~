@@ -87,7 +87,7 @@ class ControllerName extends \BaseController {
 
         // redirect
         Session::flash('message', 'Successfully deleted the {{caption}}');
-        return Redirect::to('{{route/index}}');
+        return Redirect::to('{{route/}}');
     }
 
 }
