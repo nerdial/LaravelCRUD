@@ -47,8 +47,8 @@ class CrudMock extends Command
         $template = File::get($this->getPath("commands/crud/template/model.crud"));
         foreach ($models as $model) {
             $model = ucwords($model);
-            $template = $this->setTemplate($template, $model);
-            File::put($this->getPath("mocks/Mock") . $model . ".php", $template);
+            $content = $this->setTemplate($template, $model);
+            File::put($this->getPath("mocks/Mock") . $model . ".php", $content);
         }
         $this->response(count($models));
     }
